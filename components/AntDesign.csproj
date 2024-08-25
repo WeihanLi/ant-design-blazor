@@ -25,6 +25,12 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>./LocalizedIntellisenseFiles/$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <IsTrimmable>true</IsTrimmable>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net7.0'))">true</IsAotCompatible>
+  </PropertyGroup>
   
   <ItemGroup>
     <TfmSpecificPackageFile Include="LocalizedIntellisenseFiles\**\*.xml" Exclude="LocalizedIntellisenseFiles/$(AssemblyName).xml" PackagePath="/lib/$(TargetFramework)" />
